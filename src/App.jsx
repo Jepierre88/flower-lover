@@ -1,28 +1,56 @@
-import React, { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Box, OrbitControls } from "@react-three/drei";
-
-const Scene = () => {
-  const boxRef = useRef();
-  useFrame((state, delta) => {
-    boxRef.current.rotation.y += 0.02;
-  });
-
-  return (
-    <>
-      <Box ref={boxRef} args={[1, 1, 1]} rotation={[0.5, 0, 0]}>
-        <meshNormalMaterial />
-      </Box>
-      <ambientLight />
-    </>
-  );
-};
+import React from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Text, Text3D } from "@react-three/drei";
+import { Model } from "./CustomModels";
 
 const App = () => {
   return (
-    <Canvas camera={{ fov: 70, position: [0, 0, 3] }}>
+    <Canvas camera={{ position: [0, 0, 150], fov: 50 }}>
+      {/* Controles para mover la cámara manualmente */}
       <OrbitControls />
-      <Scene />
+      {/* Iluminación */}
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[10, 10, 5]} intensity={1} />
+
+      {/* Modelo de la rosa */}
+      <Model
+        url={"/ROSE.obj"}
+        mtlUrl={"/ROSE.mtl"}
+        position={[0, 5, 0]}
+        rotation={[0.1,1,0.5]}
+        scale={[1, 1, 1]} // Aumenta la escala
+      />
+
+
+        <Text3D
+          font="/helvetiker_regular.typeface.json" // Ruta al archivo JSON de la fuente
+          size={5} // Tamaño del texto
+          height={2} // Grosor del texto
+          bevelEnabled // Activa el bisel
+          bevelThickness={0.1} // Grosor del bisel
+          bevelSize={0.3} // Tamaño del bisel
+          bevelSegments={10} // Resolución del bisel
+          position={[-20, 40, 0]} // Posición del texto en el espacio 3D
+        >
+          Para ti, reina {"<3"}
+          <meshStandardMaterial color="#fff" /> {/* Material para el texto */}
+        </Text3D>
+
+      {/* Texto 3D con @react-three/drei */}
+      <Text3D
+          font="/helvetiker_regular.typeface.json" // Ruta al archivo JSON de la fuente
+          size={5} // Tamaño del texto
+          height={2} // Grosor del texto
+
+          bevelEnabled // Activa el bisel
+          bevelThickness={0.3} // Grosor del bisel
+          bevelSize={0.3} // Tamaño del bisel
+          bevelSegments={10} // Resolución del bisel
+          position={[-22, -20, 0]} // Posición del texto en el espacio 3D
+        >
+          Angie Sofia :3
+          <meshStandardMaterial color="#fff" /> {/* Material para el texto */}
+        </Text3D>
     </Canvas>
   );
 };
