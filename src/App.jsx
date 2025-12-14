@@ -77,7 +77,7 @@ const App = () => {
             bevelSegments={10} // Resolución del bisel
             position={[-43, -20, 0]} // Posición del texto en el espacio 3D
           >
-            (Si no te gustan, te odioare)
+            (Si no te gusta, te odioare)
             <meshStandardMaterial color="rgba(255, 255, 255, 1)" /> {/* Material para el texto */}
           </Text3D>
         </Suspense>
