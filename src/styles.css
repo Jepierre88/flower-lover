@@ -11,7 +11,7 @@ body,
   padding: 0;
   background: 
     radial-gradient(ellipse at top, #000, transparent),
-    radial-gradient(ellipse at bottom, rgb(11, 35, 105), #000);  
+    radial-gradient(ellipse at bottom, rgb(173, 10, 152), #000);  
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
