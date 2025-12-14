@@ -84,7 +84,7 @@ const App = () => {
       </Canvas>
 
       {/* Fallback/loader mientras cargan los modelos */}
-      <Loader />
+      <Loader dataInterpolation={p => `Espera un momento mi amor... ${p.toFixed(0)}%`} />
     </>
   );
 };
